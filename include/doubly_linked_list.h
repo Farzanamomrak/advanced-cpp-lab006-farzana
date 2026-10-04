@@ -76,10 +76,6 @@ template <typename T>
 DLinkedList<T>& DLinkedList<T>::operator=(const DLinkedList& other) {
     if (this != &other) {
         clear();
-        header_ = new DNode<T>(T(), nullptr, nullptr);
-        trailer_ = new DNode<T>(T(), nullptr, nullptr);
-        header_->next = trailer_;
-        trailer_->prev = header_;
         for (DNode<T>* current = other.header_->next; current != other.trailer_; current = current->next) {
             push_back(current->value);
         }
